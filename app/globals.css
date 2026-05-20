@@ -1,1 +1,70 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    background-color: #0d0d0f;
+    color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* Placeholder asset system */
+  .placeholder-asset {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #131316;
+    border: 1px dashed rgba(59, 130, 246, 0.2);
+    overflow: hidden;
+  }
+
+  .placeholder-label {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.32);
+    text-align: center;
+    padding: 0 1.25rem;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    max-width: 300px;
+  }
+
+  /* Consistent section container */
+  .section-container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+}

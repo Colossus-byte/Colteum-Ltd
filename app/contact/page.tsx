@@ -1,212 +1,269 @@
-import { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Colteum Limited",
-  description:
-    "Get in touch with Colteum Limited to discuss partnerships, consulting, and strategic opportunities.",
-};
+import { useActionState, useState } from "react";
+import Link from "next/link";
+import { submitContactForm, type FormState } from "./action";
+
+const initialState: FormState = { success: false, error: null };
+
+const inquiryTypes = [
+  "Service Project",
+  "Partnership / Investment",
+  "Press / Speaking",
+  "General",
+];
+
+const ventures = [
+  "Clarix Protocol",
+  "Colteum Games",
+  "Commerce & Trade",
+  "Investments & Ventures",
+];
 
 export default function ContactPage() {
+  const [state, formAction, pending] = useActionState(
+    submitContactForm,
+    initialState
+  );
+  const [inquiry, setInquiry] = useState("");
+
   return (
-    <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-[#0A1F44] overflow-hidden">
-        <div
-          className="absolute inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: 'url("https://picsum.photos/1920/1080?random=6")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F44] to-transparent z-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Partner With <span className="text-[#C8A227]">Us</span>
+    <>
+      {/* ── HERO ── */}
+      <section className="pt-32 pb-10 md:pt-40 md:pb-16">
+        <div className="section-container">
+          <h1 className="text-[clamp(2.4rem,6vw,4.5rem)] font-bold text-white mb-4 max-w-[16ch]">
+            Tell us what you&apos;re building.
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl font-light leading-relaxed">
-            Reach out to our team to explore collaboration opportunities,
-            request consulting services, or learn more about our global
-            operations.
+          <p className="text-lg text-zinc-400 max-w-lg leading-relaxed">
+            Fixed-price quote within 24 hours. No obligation.
           </p>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
+      {/* ── FORM + INFO ── */}
+      <section className="py-10 md:py-16 border-t border-white/[0.06]">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16">
+            {/* Form */}
             <div>
-              <h2 className="text-sm font-bold text-[#C8A227] uppercase tracking-widest mb-3">
-                Get In Touch
-              </h2>
-              <h3 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A1F44] mb-8">
-                Let&apos;s Build the Future of Commerce Together
-              </h3>
-              <p className="text-lg text-slate-600 leading-relaxed mb-12">
-                Whether you are looking to expand your digital presence,
-                optimize your supply chain, or explore strategic investments,
-                Colteum Limited is your trusted partner for growth.
-              </p>
-
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <MapPin className="w-6 h-6 text-[#C8A227]" />
-                  </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Global Headquarters
-                    </h4>
-                    <p className="text-slate-600">
-                      Emperor Plaza, 506
-                      <br />
-                      Koinange Street, Nairobi KE
-                    </p>
-                  </div>
+              {state.success ? (
+                <div className="border border-emerald-500/20 bg-emerald-500/5 rounded-xl p-8">
+                  <h2 className="text-xl font-semibold text-white mb-3">
+                    Got it — we&apos;ll be in touch within 24 hours.
+                  </h2>
+                  <p className="text-zinc-400 mb-6">
+                    Check your inbox. If you need something faster, WhatsApp is
+                    the quickest route.
+                  </p>
+                  <a
+                    href="https://wa.me/254746089499?text=Hi%20Colteum%2C%20I%27m%20following%20up%20on%20my%20enquiry."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                  >
+                    Open WhatsApp →
+                  </a>
                 </div>
+              ) : (
+                <form action={formAction} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm text-zinc-400 mb-2"
+                      >
+                        Name <span className="text-zinc-600">*</span>
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="Jude Baraka"
+                        className="w-full bg-[#131316] border border-white/[0.08] rounded-md px-4 py-3 text-white placeholder:text-zinc-600 text-sm focus:outline-none focus:border-blue-500/50 transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm text-zinc-400 mb-2"
+                      >
+                        Email <span className="text-zinc-600">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="you@example.com"
+                        className="w-full bg-[#131316] border border-white/[0.08] rounded-md px-4 py-3 text-white placeholder:text-zinc-600 text-sm focus:outline-none focus:border-blue-500/50 transition-colors"
+                      />
+                    </div>
+                  </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <Mail className="w-6 h-6 text-[#C8A227]" />
+                  <div>
+                    <label
+                      htmlFor="inquiry"
+                      className="block text-sm text-zinc-400 mb-2"
+                    >
+                      Inquiry type
+                    </label>
+                    <select
+                      id="inquiry"
+                      name="inquiry"
+                      value={inquiry}
+                      onChange={(e) => setInquiry(e.target.value)}
+                      className="w-full bg-[#131316] border border-white/[0.08] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500/50 transition-colors appearance-none text-white"
+                    >
+                      <option value="" className="text-zinc-600 bg-[#131316]">
+                        Select one…
+                      </option>
+                      {inquiryTypes.map((t) => (
+                        <option key={t} value={t} className="bg-[#131316]">
+                          {t}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Email Us
-                    </h4>
-                    <p className="text-slate-600">
-                      colteumcompany@gmail.com
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <Phone className="w-6 h-6 text-[#C8A227]" />
+                  {inquiry === "Partnership / Investment" && (
+                    <div>
+                      <label
+                        htmlFor="venture"
+                        className="block text-sm text-zinc-400 mb-2"
+                      >
+                        Which venture?
+                      </label>
+                      <select
+                        id="venture"
+                        name="venture"
+                        className="w-full bg-[#131316] border border-white/[0.08] rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500/50 transition-colors appearance-none text-white"
+                      >
+                        <option value="" className="bg-[#131316]">
+                          Select venture…
+                        </option>
+                        {ventures.map((v) => (
+                          <option key={v} value={v} className="bg-[#131316]">
+                            {v}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm text-zinc-400 mb-2"
+                    >
+                      Message <span className="text-zinc-600">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="Tell us what you're building, what you need, and your timeline…"
+                      className="w-full bg-[#131316] border border-white/[0.08] rounded-md px-4 py-3 text-white placeholder:text-zinc-600 text-sm focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
+                    />
                   </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Call Us
-                    </h4>
-                    <p className="text-slate-600">
-                      +254746089499
-                      <br />
-                      Mon-Fri, 9am-6pm EAT
-                    </p>
-                  </div>
-                </div>
-              </div>
+
+                  {state.error && (
+                    <p className="text-sm text-red-400">{state.error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={pending}
+                    className="bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium px-8 py-3.5 rounded-md transition-colors w-full sm:w-auto"
+                  >
+                    {pending ? "Sending…" : "Send Message"}
+                  </button>
+                </form>
+              )}
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white p-8 sm:p-10 rounded-xl shadow-lg border border-slate-100">
-              <h3 className="font-serif text-2xl font-bold text-[#0A1F44] mb-6">
-                Send a Message
-              </h3>
-              <form action="https://formsubmit.co/colteumcompany@gmail.com" method="POST" className="space-y-6">
-                <input type="hidden" name="_subject" value="New submission from Colteum website!" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-sm font-medium text-slate-700 mb-2"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-sm font-medium text-slate-700 mb-2"
-                    >
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all bg-white"
-                  >
-                    <option value="">Select a topic</option>
-                    <option value="partnership">Partnership Inquiry</option>
-                    <option value="services">Services & Consulting</option>
-                    <option value="investment">Investment Opportunities</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all resize-none"
-                    placeholder="How can we help you?"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#0A1F44] hover:bg-[#153266] text-white font-semibold py-4 rounded-md transition-colors uppercase tracking-widest text-sm"
+            {/* Info */}
+            <div className="space-y-10">
+              <div>
+                <p className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
+                  Faster route
+                </p>
+                <a
+                  href="https://wa.me/254746089499?text=Hi%20Colteum%2C%20I%27m%20interested%20in%20your%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-[#131316] border border-white/[0.06] rounded-xl p-5 hover:border-white/10 transition-colors"
                 >
-                  Send Message
-                </button>
-              </form>
+                  <span className="text-2xl">💬</span>
+                  <div>
+                    <p className="text-sm font-medium text-white">
+                      Start on WhatsApp
+                    </p>
+                    <p className="text-xs text-zinc-500 mt-0.5">
+                      +254 746 089 499
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
+                  Email directly
+                </p>
+                <div className="space-y-3">
+                  {[
+                    {
+                      address: "hello@colteumgroup.com",
+                      note: "General & service inquiries",
+                    },
+                    {
+                      address: "partnerships@colteumgroup.com",
+                      note: "Partnerships & investment",
+                    },
+                    {
+                      address: "labs@colteumgroup.com",
+                      note: "Colteum Labs & ventures",
+                    },
+                  ].map((e) => (
+                    <div key={e.address}>
+                      <a
+                        href={`mailto:${e.address}`}
+                        className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                      >
+                        {e.address}
+                      </a>
+                      <p className="text-xs text-zinc-600 mt-0.5">{e.note}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
+                  Response time
+                </p>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  Fixed-price quote within 24 hours. For WhatsApp: typically
+                  within 2 hours during Nairobi business hours (Mon–Fri,
+                  8am–6pm EAT).
+                </p>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
+                  Location
+                </p>
+                <p className="text-sm text-zinc-400">Nairobi, Kenya</p>
+                <p className="text-xs text-zinc-600 mt-1">
+                  East Africa Time (UTC+3)
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
