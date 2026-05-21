@@ -22,11 +22,10 @@ const buildCategories = [
   {
     id: "build",
     label: "Build",
-    tagline: "Websites, software, and Web3 infrastructure.",
+    tagline: "Websites, software, and frontier-tech infrastructure.",
     offers: [
       { name: "Web Platform Sprint", from: "From KES 75,000", delivery: "72 hours" },
-      { name: "Custom Infrastructure", from: "From KES 250,000", delivery: "2–4 weeks" },
-      { name: "Web3 Build", from: "From KES 350,000", delivery: "2–6 weeks" },
+      { name: "Custom Build", from: "From $5,000 / ~KES 650,000", delivery: "2–6 weeks" },
     ],
   },
   {
@@ -165,7 +164,7 @@ export default function HomePage() {
     <>
       {/* ── S1: HERO ──────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <Spotlight className="absolute inset-0 z-0" fill="rgba(59,130,246,0.13)" />
+        <Spotlight className="absolute inset-0 z-0" fill="rgb(59,130,246)" />
 
         <div className="section-container relative z-10 text-center py-32">
           <FadeIn>
@@ -330,7 +329,7 @@ export default function HomePage() {
       {/* ── S5: INTELLIGENCE FEATURE BLOCK ────────────────────────────── */}
       <section className="py-28 border-y border-white/8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[--bg-surface-2]/50 via-transparent to-[--bg-primary] pointer-events-none" />
-        <Spotlight className="absolute inset-0 z-0" fill="rgba(139,92,246,0.15)" />
+        <Spotlight className="absolute inset-0 z-0" fill="rgb(139,92,246)" />
 
         <div className="section-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
