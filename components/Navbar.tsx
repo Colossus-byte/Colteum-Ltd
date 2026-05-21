@@ -1,86 +1,124 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { name: "Services", href: "/services" },
+  { name: "Intelligence", href: "/intelligence" },
+  { name: "Work", href: "/work" },
+  { name: "Labs", href: "/labs" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  const navLinks = [
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Contact", href: "/contact" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => setIsOpen(false), [pathname]);
 
   return (
-    <header className="fixed w-full z-50 transition-all duration-300 bg-[#0A1F44]/95 backdrop-blur-md border-b border-white/10">
+    <header
+      className={cn(
+        "fixed w-full z-50 transition-all duration-300",
+        scrolled
+          ? "bg-[#0A1628]/90 backdrop-blur-md border-b border-white/8 shadow-lg shadow-black/20"
+          : "bg-transparent"
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center">
-            <span className="font-serif text-2xl font-bold text-white tracking-tight">
+        <div className="flex justify-between items-center h-18 py-4">
+          {/* Wordmark */}
+          <Link href="/" className="flex items-center group">
+            <span className="font-display text-xl font-bold text-white tracking-tight group-hover:text-[--accent-primary] transition-colors duration-200">
               Colteum
+            </span>
+            <span className="ml-1.5 text-xs font-mono text-[--text-muted] tracking-widest uppercase mt-0.5 hidden sm:block">
+              Ltd
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-[#C8A227] transition-colors uppercase tracking-widest"
+                className={cn(
+                  "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150",
+                  pathname === link.href
+                    ? "text-white bg-white/8"
+                    : "text-[--text-muted] hover:text-white hover:bg-white/5"
+                )}
               >
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="bg-[#C8A227] hover:bg-[#b08d22] text-white px-6 py-2.5 rounded text-sm font-semibold transition-colors uppercase tracking-widest"
-            >
-              Partner With Us
-            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/contact"
+              className="cta-primary text-sm px-5 py-2.5 rounded-lg"
+            >
+              Get a Quote
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 rounded-lg hover:bg-white/8 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0A1F44] border-t border-white/10"
+            transition={{ duration: 0.2, ease: "easeInOut" as const }}
+            className="md:hidden bg-[#0A1628]/95 backdrop-blur-md border-t border-white/8"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
+            <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-slate-300 hover:text-[#C8A227] hover:bg-white/5 transition-colors uppercase tracking-widest"
+                  className={cn(
+                    "flex items-center px-4 py-3 rounded-lg text-base font-medium transition-colors",
+                    pathname === link.href
+                      ? "text-white bg-white/8"
+                      : "text-[--text-muted] hover:text-white hover:bg-white/5"
+                  )}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 pb-2">
+              <div className="pt-3 pb-1">
                 <Link
                   href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-[#C8A227] text-white px-6 py-3 rounded font-semibold uppercase tracking-widest"
+                  className="cta-primary block w-full text-center text-base px-6 py-3 rounded-lg"
                 >
-                  Partner With Us
+                  Get a Quote
                 </Link>
               </div>
             </div>

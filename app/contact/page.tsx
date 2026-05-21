@@ -1,208 +1,150 @@
-import { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import type { Metadata } from "next";
+import { Mail, MessageCircle, Clock } from "lucide-react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { FadeIn } from "@/components/ui/fade-in";
+import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Colteum Limited",
+  title: "Contact",
   description:
-    "Get in touch with Colteum Limited to discuss partnerships, consulting, and strategic opportunities.",
+    "Get a fixed-price quote within 24 hours. Tell us what you're building and we'll get back to you fast.",
+  openGraph: {
+    title: "Contact Colteum",
+    description: "Tell us what you're building. Fixed-price quote within 24 hours.",
+  },
 };
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{ service?: string; type?: string }>;
+}
+
+const serviceSlugToLabel: Record<string, string> = {
+  "launch-page-sprint": "Launch Page Sprint",
+  "web-platform-sprint": "Web Platform Sprint",
+  "custom-infrastructure": "Custom Infrastructure",
+  "web3-build": "Web3 Build",
+  "brand-system": "Brand System",
+  "ugc-system": "Content & UGC System",
+  "growth-engine": "Growth Engine",
+  "proposal-systems": "Proposal & Funding Systems",
+  "strategic-consulting": "Strategic Consulting",
+  "intelligence-subscription": "Intelligence Subscription",
+  "custom-research": "Custom Research Briefings",
+  "hnw-briefing": "HNW Quarterly Briefing",
+  "strategic-retainer": "Strategic Retainer",
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  const defaultService = params.service ? (serviceSlugToLabel[params.service] ?? "") : "";
+  const defaultType = params.type ?? "";
+
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-[#0A1F44] overflow-hidden">
-        <div
-          className="absolute inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: 'url("https://picsum.photos/1920/1080?random=6")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1F44] to-transparent z-0" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Partner With <span className="text-[#C8A227]">Us</span>
-          </h1>
-          <p className="text-xl text-slate-300 max-w-2xl font-light leading-relaxed">
-            Reach out to our team to explore collaboration opportunities,
-            request consulting services, or learn more about our global
-            operations.
-          </p>
+      <section className="py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/40 to-transparent pointer-events-none" />
+        <div className="section-container relative z-10">
+          <FadeIn>
+            <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-4">
+              Get in Touch
+            </p>
+            <h1
+              className="font-display font-bold text-white mb-5"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            >
+              Tell us what you&rsquo;re building.
+            </h1>
+            <p className="text-xl text-[--text-muted] max-w-xl leading-relaxed">
+              Fixed-price quote within 24 hours. No obligation.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <div>
-              <h2 className="text-sm font-bold text-[#C8A227] uppercase tracking-widest mb-3">
-                Get In Touch
-              </h2>
-              <h3 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A1F44] mb-8">
-                Let&apos;s Build the Future of Commerce Together
-              </h3>
-              <p className="text-lg text-slate-600 leading-relaxed mb-12">
-                Whether you are looking to expand your digital presence,
-                optimize your supply chain, or explore strategic investments,
-                Colteum Limited is your trusted partner for growth.
-              </p>
-
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <MapPin className="w-6 h-6 text-[#C8A227]" />
-                  </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Global Headquarters
-                    </h4>
-                    <p className="text-slate-600">
-                      Emperor Plaza, 506
-                      <br />
-                      Koinange Street, Nairobi KE
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <Mail className="w-6 h-6 text-[#C8A227]" />
-                  </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Email Us
-                    </h4>
-                    <p className="text-slate-600">
-                      colteumcompany@gmail.com
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-100 shadow-sm">
-                    <Phone className="w-6 h-6 text-[#C8A227]" />
-                  </div>
-                  <div className="ml-6">
-                    <h4 className="text-lg font-bold text-[#0A1F44] mb-1">
-                      Call Us
-                    </h4>
-                    <p className="text-slate-600">
-                      +254746089499
-                      <br />
-                      Mon-Fri, 9am-6pm EAT
-                    </p>
-                  </div>
-                </div>
-              </div>
+      <section className="pb-28">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            {/* Form */}
+            <div className="lg:col-span-3">
+              <FadeIn>
+                <GlassCard className="p-8">
+                  <ContactForm defaultService={defaultService} defaultType={defaultType} />
+                </GlassCard>
+              </FadeIn>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white p-8 sm:p-10 rounded-xl shadow-lg border border-slate-100">
-              <h3 className="font-serif text-2xl font-bold text-[#0A1F44] mb-6">
-                Send a Message
-              </h3>
-              <form action="https://formsubmit.co/colteumcompany@gmail.com" method="POST" className="space-y-6">
-                <input type="hidden" name="_subject" value="New submission from Colteum website!" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block text-sm font-medium text-slate-700 mb-2"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                      placeholder="John"
-                    />
+            {/* Sidebar */}
+            <div className="lg:col-span-2 space-y-6">
+              <FadeIn delay={0.1}>
+                {/* Response promise */}
+                <GlassCard className="p-6">
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-[--accent-primary]/10 flex items-center justify-center shrink-0">
+                      <Clock size={15} className="text-[--accent-primary]" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white mb-1">Fast response</p>
+                      <p className="text-xs text-[--text-muted] leading-relaxed">
+                        We reply within 24 hours, often within 2.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block text-sm font-medium text-slate-700 mb-2"
-                    >
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                      placeholder="Doe"
-                    />
+                </GlassCard>
+              </FadeIn>
+
+              <FadeIn delay={0.15}>
+                {/* WhatsApp */}
+                <GlassCard className="p-6">
+                  <p className="text-xs font-mono text-[--text-muted] uppercase tracking-widest mb-4">
+                    Prefer WhatsApp?
+                  </p>
+                  <a
+                    href="https://wa.me/254746089499?text=Hi%20Colteum%2C%20I%27m%20interested%20in%20working%20with%20you"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm text-white hover:text-[--accent-primary] transition-colors"
+                  >
+                    <MessageCircle size={18} className="text-[--success] shrink-0" />
+                    +254 746 089 499
+                  </a>
+                  <p className="text-xs text-[--text-muted] mt-2 ml-7">
+                    Message us directly and we&rsquo;ll respond fast.
+                  </p>
+                </GlassCard>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                {/* Email */}
+                <GlassCard className="p-6">
+                  <p className="text-xs font-mono text-[--text-muted] uppercase tracking-widest mb-4">
+                    Email us directly
+                  </p>
+                  <a
+                    href="mailto:hello@colteumgroup.com"
+                    className="flex items-center gap-3 text-sm text-white hover:text-[--accent-primary] transition-colors"
+                  >
+                    <Mail size={16} className="text-[--accent-primary] shrink-0" />
+                    hello@colteumgroup.com
+                  </a>
+                </GlassCard>
+              </FadeIn>
+
+              <FadeIn delay={0.25}>
+                {/* Calendly placeholder */}
+                <GlassCard className="p-6">
+                  <p className="text-xs font-mono text-[--text-muted] uppercase tracking-widest mb-4">
+                    Book a Call
+                  </p>
+                  <div
+                    className="placeholder-asset rounded-lg h-32"
+                    data-replace="calendly-embed"
+                  >
+                    <span className="placeholder-label">
+                      [Calendly embed — TODO: add booking link]
+                    </span>
                   </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all bg-white"
-                  >
-                    <option value="">Select a topic</option>
-                    <option value="partnership">Partnership Inquiry</option>
-                    <option value="services">Services & Consulting</option>
-                    <option value="investment">Investment Opportunities</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-slate-700 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full px-4 py-3 rounded-md border border-slate-200 focus:ring-2 focus:ring-[#C8A227] focus:border-transparent outline-none transition-all resize-none"
-                    placeholder="How can we help you?"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#0A1F44] hover:bg-[#153266] text-white font-semibold py-4 rounded-md transition-colors uppercase tracking-widest text-sm"
-                >
-                  Send Message
-                </button>
-              </form>
+                </GlassCard>
+              </FadeIn>
             </div>
           </div>
         </div>
