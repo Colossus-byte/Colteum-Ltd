@@ -162,36 +162,38 @@ const trustLogos = [
 export default function HomePage() {
   return (
     <>
-      {/* ── S1: HERO ──────────────────────────────────────────────────── */}
+      {/* ── S1: HERO ─────────────────────────────────────────────────────
+          Tier: Monumental (py-40 sm:py-56)
+          Motion: eyebrow → H1 (scale) → subtitle → CTAs
+      ─────────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <Spotlight className="absolute inset-0 z-0" fill="rgb(59,130,246)" />
 
-        <div className="section-container relative z-10 text-center py-32">
-          <FadeIn>
-            <p
-              className="text-[13px] font-mono tracking-[0.2em] mb-8 text-[--accent-primary]"
-              style={{ fontVariant: "small-caps" }}
-            >
+        <div className="section-container relative z-10 text-center py-40 sm:py-56">
+          <FadeIn direction="up">
+            <span className="eyebrow-pill">
               Modern infrastructure for modern businesses. Built lean. Shipped fast.
-            </p>
+            </span>
           </FadeIn>
 
-          <FadeIn delay={0.08}>
-            <h1 className="font-display font-bold text-white mb-6 leading-[1.05] tracking-tight"
-              style={{ fontSize: "clamp(2.75rem, 7vw, 6.5rem)" }}>
+          <FadeIn direction="scale" delay={0.08}>
+            <h1
+              className="font-display font-bold text-white mb-6 leading-[1.05] tracking-[-0.04em]"
+              style={{ fontSize: "clamp(3rem, 8vw, 7.25rem)" }}
+            >
               Digital Infrastructure<br className="hidden sm:block" /> for Modern Businesses.
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
-            <p className="text-lg sm:text-xl text-[--text-muted] max-w-2xl mx-auto mb-10 leading-relaxed">
+          <FadeIn direction="up" delay={0.18}>
+            <p className="text-lg sm:text-xl text-[--text-muted] max-w-xl mx-auto mb-10 leading-relaxed">
               Colteum is a Nairobi-based product studio building growth-ready websites,
               brand systems, content engines, custom software, and frontier-tech
               infrastructure for businesses worldwide. Productized. Team-led. Shipped in days.
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.22}>
+          <FadeIn direction="up" delay={0.26}>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
@@ -210,14 +212,18 @@ export default function HomePage() {
           </FadeIn>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[--bg-primary] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[--bg-primary] to-transparent pointer-events-none" />
       </section>
 
-      {/* ── S2: TRUST BAR ─────────────────────────────────────────────── */}
-      <section className="py-14 border-y border-white/8 overflow-hidden">
+      {/* ── S2: TRUST BAR ────────────────────────────────────────────────
+          Tier: Compact (py-16 sm:py-20)
+          Background: bg-surface-1/30 — slight thermal lift
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section className="py-16 sm:py-20 overflow-hidden" style={{ background: "rgba(15,27,51,0.30)" }}>
         <div className="section-container mb-6">
           <FadeIn direction="none">
-            <p className="text-center text-xs font-mono text-[--text-muted] tracking-widest uppercase">
+            <p className="text-center text-[11px] font-mono text-[--text-muted] tracking-widest uppercase">
               Trusted by founders and operators across Kenya, East Africa, and global Web3 markets.
             </p>
           </FadeIn>
@@ -237,18 +243,26 @@ export default function HomePage() {
           ))}
         </Marquee>
       </section>
+      <div className="section-divider" />
 
-      {/* ── S3: THE PROBLEM ───────────────────────────────────────────── */}
-      <section className="py-28 border-b border-white/8">
-        <div className="section-container max-w-4xl">
+      {/* ── S3: THE PROBLEM ──────────────────────────────────────────────
+          Tier: Primary (py-32 sm:py-40)
+          Type: T2 — statement heading, centered editorial
+          Motion: center-aligned, no directional variant
+      ─────────────────────────────────────────────────────────────────── */}
+      <section className="py-32 sm:py-40">
+        <div className="section-container max-w-3xl text-center">
           <FadeIn>
-            <h2 className="font-display font-bold text-white mb-8 leading-tight"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)" }}>
+            <div className="w-12 h-0.5 bg-[--accent-primary] mx-auto mb-8 opacity-70" />
+            <h2
+              className="font-display font-bold text-white mb-8 leading-[1.1] tracking-[-0.03em]"
+              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
+            >
               Most Businesses Don&rsquo;t Need Bigger Agencies. They Need Faster Execution.
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-lg text-[--text-body] leading-relaxed" style={{ lineHeight: 1.7 }}>
+            <p className="text-lg text-[--text-body] leading-[1.7]">
               Traditional agencies move in quarters. Freelancers move in fits and starts.
               In-house teams take months to ramp. Modern businesses can&rsquo;t wait. Colteum
               was built to close the gap between brief and ship — small senior teams, modern
@@ -259,16 +273,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S4: WHAT WE BUILD ─────────────────────────────────────────── */}
-      <section className="py-28">
+      {/* ── S4: WHAT WE BUILD ────────────────────────────────────────────
+          Tier: Standard (py-24 sm:py-28)
+          Type: T3 heading
+          Motion: cards stagger left → center → right
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section className="py-24 sm:py-28">
         <div className="section-container">
           <FadeIn>
-            <div className="mb-14">
-              <p className="text-xs font-mono text-[--accent-primary] tracking-widest uppercase mb-3">
-                Services
-              </p>
-              <h2 className="font-display font-bold text-white mb-4"
-                style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+            <div className="mb-16 sm:mb-20">
+              <span className="eyebrow-pill">Services</span>
+              <h2
+                className="font-display font-bold text-white mb-4 tracking-[-0.025em]"
+                style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+              >
                 What We Build.
               </h2>
               <p className="text-[--text-muted] max-w-xl leading-relaxed">
@@ -278,42 +297,45 @@ export default function HomePage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {buildCategories.map((cat, i) => (
-              <FadeIn key={cat.id} delay={i * 0.08}>
-                <GlassCard className="p-8 flex flex-col h-full">
-                  <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-3">
-                    {cat.label}
-                  </p>
-                  <p className="text-sm text-[--text-muted] leading-relaxed mb-7">
-                    {cat.tagline}
-                  </p>
-                  <div className="space-y-0 flex-1 divide-y divide-white/8">
-                    {cat.offers.map((offer) => (
-                      <div key={offer.name} className="flex items-start justify-between py-4">
-                        <div>
-                          <p className="text-sm font-medium text-white">{offer.name}</p>
-                          <p className="text-xs text-[--text-muted] mt-0.5">{offer.delivery}</p>
+            {buildCategories.map((cat, i) => {
+              const directions = ["left", "up", "right"] as const;
+              return (
+                <FadeIn key={cat.id} delay={i * 0.08} direction={directions[i]}>
+                  <GlassCard className="p-8 flex flex-col h-full">
+                    <p className="text-[11px] font-mono text-[--accent-primary] uppercase tracking-[0.18em] mb-3">
+                      {cat.label}
+                    </p>
+                    <p className="text-sm text-[--text-muted] leading-relaxed mb-7">
+                      {cat.tagline}
+                    </p>
+                    <div className="space-y-0 flex-1 divide-y divide-white/8">
+                      {cat.offers.map((offer) => (
+                        <div key={offer.name} className="flex items-start justify-between py-4">
+                          <div>
+                            <p className="text-sm font-medium text-white">{offer.name}</p>
+                            <p className="text-xs text-[--text-muted] mt-0.5">{offer.delivery}</p>
+                          </div>
+                          <span className="text-xs font-mono text-[--accent-primary] shrink-0 ml-4 mt-0.5">
+                            {offer.from}
+                          </span>
                         </div>
-                        <span className="text-xs font-mono text-[--accent-primary] shrink-0 ml-4 mt-0.5">
-                          {offer.from}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/services#${cat.id}`}
-                    className="text-link text-sm inline-flex items-center gap-1 mt-7"
-                  >
-                    Explore {cat.label}
-                    <ArrowRight size={13} />
-                  </Link>
-                </GlassCard>
-              </FadeIn>
-            ))}
+                      ))}
+                    </div>
+                    <Link
+                      href={`/services#${cat.id}`}
+                      className="text-link text-sm inline-flex items-center gap-1 mt-7"
+                    >
+                      Explore {cat.label}
+                      <ArrowRight size={13} />
+                    </Link>
+                  </GlassCard>
+                </FadeIn>
+              );
+            })}
           </div>
 
-          <FadeIn delay={0.25}>
-            <div className="text-center mt-12">
+          <FadeIn delay={0.28}>
+            <div className="text-center mt-14">
               <Link
                 href="/services"
                 className="cta-ghost inline-flex items-center gap-2 text-sm px-6 py-3 rounded-lg"
@@ -326,23 +348,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S5: INTELLIGENCE FEATURE BLOCK ────────────────────────────── */}
-      <section className="py-28 border-y border-white/8 relative overflow-hidden">
+      {/* ── S5: INTELLIGENCE FEATURE BLOCK ───────────────────────────────
+          Tier: Primary (py-32 sm:py-40)
+          Type: T3 heading (restrained — credibility over spectacle)
+          Background: bg-surface-1 at full strength; purple spotlight at /50 (unchanged)
+          Motion: content slides left, tier cards slide right
+          NOTE: purple spotlight intentionally kept at /50 — section sells
+                research credibility, not visual drama
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section
+        className="py-32 sm:py-40 relative overflow-hidden"
+        style={{ background: "rgba(15,27,51,0.85)" }}
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-[--bg-surface-2]/50 via-transparent to-[--bg-primary] pointer-events-none" />
         <Spotlight className="absolute inset-0 z-0" fill="rgb(139,92,246)" />
 
         <div className="section-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <FadeIn>
+            <FadeIn direction="left">
               <div>
-                <p className="text-xs font-mono text-[--accent-secondary] uppercase tracking-widest mb-4">
-                  Colteum Intelligence
-                </p>
-                <h2 className="font-display font-bold text-white mb-4"
-                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+                <span className="eyebrow-pill eyebrow-pill--secondary">Colteum Intelligence</span>
+                <h2
+                  className="font-display font-bold text-white mb-4 tracking-[-0.025em]"
+                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+                >
                   Independent research for sophisticated investors.
                 </h2>
-                <p className="text-[--text-muted] leading-relaxed mb-8" style={{ lineHeight: 1.7 }}>
+                <p className="text-[--text-muted] leading-[1.7] mb-8">
                   Colteum Intelligence is a research practice covering crypto, emerging Web3 sectors,
                   and frontier digital infrastructure. We help sophisticated investors and allocators
                   understand opportunities ahead of consensus — through deep research, sector mapping,
@@ -360,10 +393,10 @@ export default function HomePage() {
 
             <div className="space-y-4">
               {intelTiers.map((tier, i) => (
-                <FadeIn key={tier.name} delay={i * 0.1}>
-                  <GlassCard className="p-6">
+                <FadeIn key={tier.name} direction="right" delay={i * 0.1}>
+                  <GlassCard className="p-6" variant="static">
                     <div className="flex items-start justify-between gap-4 mb-2">
-                      <h3 className="font-display font-bold text-white text-base">
+                      <h3 className="font-display font-bold text-white text-base tracking-[-0.01em]">
                         {tier.name}
                       </h3>
                       <span className="text-xs font-mono text-[--accent-secondary] shrink-0">
@@ -379,17 +412,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S6: RECENT WORK ───────────────────────────────────────────── */}
-      <section className="py-28">
+      {/* ── S6: RECENT WORK ──────────────────────────────────────────────
+          Tier: Standard (py-24 sm:py-28)
+          Type: T3 heading
+          Motion: each card fades up, 100ms stagger
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section className="py-24 sm:py-28">
         <div className="section-container">
           <FadeIn>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16 sm:mb-20">
               <div>
-                <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-3">
-                  Portfolio
-                </p>
-                <h2 className="font-display font-bold text-white"
-                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+                <span className="eyebrow-pill">Portfolio</span>
+                <h2
+                  className="font-display font-bold text-white tracking-[-0.025em]"
+                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+                >
                   What We&rsquo;ve Shipped.
                 </h2>
               </div>
@@ -405,7 +443,7 @@ export default function HomePage() {
 
           <div className="space-y-8">
             {caseStudies.map((study, i) => (
-              <FadeIn key={study.name} delay={i * 0.08}>
+              <FadeIn key={study.name} direction="up" delay={i * 0.1}>
                 <GlassCard className="overflow-hidden">
                   <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="aspect-[16/10] lg:aspect-auto lg:h-72 overflow-hidden bg-[--bg-surface-1] flex items-center justify-center p-6">
@@ -413,13 +451,17 @@ export default function HomePage() {
                         src={study.image}
                         alt={study.imageLabel}
                         className="w-full h-full object-contain"
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col justify-center">
-                      <h3 className="font-display font-bold text-white text-2xl mb-3">
+                      <h3
+                        className="font-display font-bold text-white mb-3 tracking-[-0.01em]"
+                        style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)" }}
+                      >
                         {study.name}
                       </h3>
-                      <p className="text-[--text-muted] leading-relaxed mb-6" style={{ lineHeight: 1.7 }}>
+                      <p className="text-[--text-muted] leading-[1.7] mb-6">
                         {study.desc}
                       </p>
                       {study.link ? (
@@ -446,51 +488,82 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S7: HOW WE WORK ───────────────────────────────────────────── */}
-      <section className="py-28 border-y border-white/8">
+      {/* ── S7: HOW WE WORK ──────────────────────────────────────────────
+          Tier: Compact (py-16 sm:py-20)
+          Type: T4 heading
+          Background: bg-surface-1/40 — slight thermal lift
+          Motion: steps converge left → up → right
+          Numbers: large watermark numerals behind each step
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section
+        className="py-16 sm:py-20 relative"
+        style={{ background: "rgba(15,27,51,0.40)" }}
+      >
         <div className="section-container">
           <FadeIn>
-            <div className="text-center mb-16">
-              <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-3">
-                Process
-              </p>
-              <h2 className="font-display font-bold text-white"
-                style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+            <div className="text-center mb-14">
+              <span className="eyebrow-pill">Process</span>
+              <h2
+                className="font-display font-bold text-white tracking-[-0.02em]"
+                style={{ fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)" }}
+              >
                 Three steps. No surprises.
               </h2>
             </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {processSteps.map((step, i) => (
-              <FadeIn key={step.number} delay={i * 0.1}>
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-[--border-accent] bg-[--bg-surface-1] mb-5">
-                    <span className="text-xs font-mono text-[--accent-primary]">{step.number}</span>
+            {processSteps.map((step, i) => {
+              const directions = ["left", "up", "right"] as const;
+              return (
+                <FadeIn key={step.number} delay={i * 0.1} direction={directions[i]}>
+                  <div className="text-center relative">
+                    {/* Watermark numeral */}
+                    <span
+                      className="absolute inset-x-0 -top-4 text-[8rem] font-bold text-white opacity-[0.04] leading-none select-none pointer-events-none font-display"
+                      aria-hidden="true"
+                    >
+                      {step.number}
+                    </span>
+                    <div className="relative">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-[--border-accent] bg-[--bg-surface-1] mb-5">
+                        <span className="text-[11px] font-mono text-[--accent-primary]">{step.number}</span>
+                      </div>
+                      <h3
+                        className="font-display font-bold text-white mb-3 tracking-[-0.02em]"
+                        style={{ fontSize: "clamp(1.125rem, 2vw, 1.375rem)" }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className="text-[--text-muted] text-sm leading-relaxed">{step.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-white text-xl mb-3">{step.title}</h3>
-                  <p className="text-[--text-muted] text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── S8: ABOUT THE STUDIO ──────────────────────────────────────── */}
-      <section className="py-28">
+      {/* ── S8: ABOUT THE STUDIO ─────────────────────────────────────────
+          Tier: Compact (py-16 sm:py-20)
+          Type: T4 heading
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section className="py-16 sm:py-20">
         <div className="section-container max-w-4xl">
           <FadeIn>
-            <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-4">
-              About
-            </p>
-            <h2 className="font-display font-bold text-white mb-6"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+            <span className="eyebrow-pill">About</span>
+            <h2
+              className="font-display font-bold text-white mb-6 tracking-[-0.02em]"
+              style={{ fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)" }}
+            >
               Built by Colteum.
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-lg text-[--text-body] leading-relaxed mb-8" style={{ lineHeight: 1.7 }}>
+            <p className="text-lg text-[--text-body] leading-[1.7] mb-8">
               Colteum is a Nairobi-based product studio operating as a small, senior team across
               three practices: product and infrastructure build, brand and growth systems, and
               independent research. We use modern tooling and AI as force multipliers — which means
@@ -505,17 +578,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S9: COLTEUM LABS ──────────────────────────────────────────── */}
-      <section className="py-28 border-t border-white/8">
+      {/* ── S9: COLTEUM LABS ─────────────────────────────────────────────
+          Tier: Standard (py-24 sm:py-28)
+          Type: T3 heading
+          Background: bg-surface-2/20 + warm ambient tint
+          Motion: left/right checkerboard per grid column
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section
+        className="py-24 sm:py-28 relative"
+        style={{
+          background: "rgba(20,32,66,0.20)",
+          boxShadow: "inset 0 1px 0 rgba(245,178,94,0.04)",
+        }}
+      >
         <div className="section-container">
           <FadeIn>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14 sm:mb-16">
               <div>
-                <p className="text-xs font-mono text-[--accent-warm] uppercase tracking-widest mb-3">
-                  Colteum Labs
-                </p>
-                <h2 className="font-display font-bold text-white mb-2"
-                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}>
+                <span className="eyebrow-pill eyebrow-pill--warm">Colteum Labs</span>
+                <h2
+                  className="font-display font-bold text-white mb-2 tracking-[-0.025em]"
+                  style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+                >
                   Colteum Labs.
                 </h2>
                 <p className="text-[--text-muted] text-base">
@@ -534,10 +619,10 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {ventures.map((v, i) => (
-              <FadeIn key={v.name} delay={i * 0.07}>
+              <FadeIn key={v.name} delay={i * 0.07} direction={i % 2 === 0 ? "left" : "right"}>
                 <GlassCard className="p-7">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="font-display font-bold text-white text-base">{v.name}</h3>
+                    <h3 className="font-display font-bold text-white text-base tracking-[-0.01em]">{v.name}</h3>
                     <span
                       className={`badge-${v.badge} text-[11px] px-2.5 py-0.5 rounded-full font-mono shrink-0`}
                     >
@@ -552,20 +637,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── S10: FINAL CTA ────────────────────────────────────────────── */}
-      <section className="py-32 border-t border-white/8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/40 to-[--bg-primary] pointer-events-none" />
+      {/* ── S10: FINAL CTA ───────────────────────────────────────────────
+          Tier: Monumental (py-40 sm:py-56)
+          Type: T2 — emotional peak of the page
+          Background: bg-primary + centered blue radial glow
+      ─────────────────────────────────────────────────────────────────── */}
+      <div className="section-divider" />
+      <section className="py-40 sm:py-56 relative overflow-hidden">
+        {/* Centered radial glow — positions CTA as emotional peak */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(59,130,246,0.10) 0%, transparent 70%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/20 to-[--bg-primary] pointer-events-none" />
+
         <div className="section-container relative z-10 text-center">
-          <FadeIn>
-            <h2 className="font-display font-bold text-white mb-4"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+          <FadeIn direction="scale">
+            <h2
+              className="font-display font-bold text-white mb-4 tracking-[-0.03em]"
+              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
+            >
               Tell us what you&rsquo;re building.
             </h2>
-            <p className="text-[--text-muted] text-lg mb-10">
+            <p className="text-[--text-muted] text-lg mb-12">
               Fixed-price quote within 24 hours. No obligation.
             </p>
           </FadeIn>
-          <FadeIn delay={0.1}>
+          <FadeIn direction="up" delay={0.12}>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
                 href="https://wa.me/254746089499?text=Hi%20Colteum%2C%20I%27m%20interested%20in%20working%20with%20you"
