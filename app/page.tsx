@@ -74,7 +74,7 @@ const caseStudies = [
     desc: "Platform for a rural-development NGO based in Siaya County. Built for donor credibility, program visibility, and grant readiness.",
     link: "https://brahams-foundation.vercel.app",
     linkLabel: "brahams-foundation.vercel.app",
-    image: "/public/images/projects/brahams.jpg",
+    image: "/images/projects/brahams.jpg",
     imageLabel: "Brahams Foundation homepage screenshot, 16:10",
   },
   {
@@ -82,7 +82,7 @@ const caseStudies = [
     desc: "Web3 education and credentialing platform. Currently live and in active development — verifiable on-chain credentials for the next generation of learners.",
     link: "https://clarixprotocol.com",
     linkLabel: "clarixprotocol.com",
-    image: "/public/images/projects/clarix.jpg",
+    image: "/images/projects/clarix.jpg",
     imageLabel: "Clarix Protocol homepage screenshot, 16:10",
   },
   {
@@ -90,7 +90,7 @@ const caseStudies = [
     desc: "Market positioning and digital presence work for Double Root Coffee's growth in the Kenyan market.",
     link: null,
     linkLabel: "Coming soon",
-    image: "/public/images/projects/doubleroot.jpg",
+    image: "/images/projects/doubleroot.jpg",
     imageLabel: "Double Root brand work, 16:10",
   },
 ];

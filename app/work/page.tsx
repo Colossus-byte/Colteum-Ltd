@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PlaceholderAsset } from "@/components/PlaceholderAsset";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -51,7 +51,7 @@ const caseStudies: CaseStudy[] = [
       "A credible digital home for the foundation — built for donor trust and grant readiness.",
     link: "https://brahams-foundation.vercel.app",
     linkLabel: "brahams-foundation.vercel.app",
-    image: "/public/images/projects/brahams.jpg",
+    image: "/images/projects/brahams.jpg",
     imageAlt: "Brahams Foundation homepage screenshot, 16:10",
     status: "live",
   },
@@ -75,7 +75,7 @@ const caseStudies: CaseStudy[] = [
       "Live platform in active development — verifiable credentials for learners, recognized by institutional partners.",
     link: "https://clarixprotocol.com",
     linkLabel: "clarixprotocol.com",
-    image: "/public/images/projects/clarix.jpg",
+    image: "/images/projects/clarix.jpg",
     imageAlt: "Clarix Protocol homepage screenshot, 16:10",
     status: "live",
   },
@@ -97,7 +97,7 @@ const caseStudies: CaseStudy[] = [
     outcome: "Stronger brand foundation and market clarity for Double Root's Kenyan expansion.",
     link: null,
     linkLabel: "Coming soon",
-    image: "/public/images/projects/doubleroot.jpg",
+    image: "/images/projects/doubleroot.jpg",
     imageAlt: "Double Root Coffee brand work, 16:10",
     status: "dev",
   },
@@ -107,11 +107,15 @@ function CaseStudyBlock({ study }: { study: CaseStudy }) {
   return (
     <GlassCard className="overflow-hidden">
       {/* Screenshot */}
-      <PlaceholderAsset
-        label={study.imageAlt}
-        aspectRatio="aspect-[16/10]"
-        className="w-full"
-      />
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <Image
+          src={study.image}
+          alt={study.imageAlt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 800px"
+        />
+      </div>
 
       <div className="p-8 lg:p-12">
         {/* Header */}
