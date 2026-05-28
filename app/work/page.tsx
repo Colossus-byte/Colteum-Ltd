@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { FadeIn } from "@/components/ui/fade-in";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -107,13 +106,11 @@ function CaseStudyBlock({ study }: { study: CaseStudy }) {
   return (
     <GlassCard className="overflow-hidden">
       {/* Screenshot */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
-        <Image
+      <div className="aspect-[16/10] w-full overflow-hidden">
+        <img
           src={study.image}
           alt={study.imageAlt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 800px"
+          className="w-full h-full object-cover"
         />
       </div>
 

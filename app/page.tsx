@@ -5,7 +5,6 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { Marquee } from "@/components/ui/marquee";
 import { GlassCard } from "@/components/ui/glass-card";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PlaceholderAsset } from "@/components/PlaceholderAsset";
 
 export const metadata: Metadata = {
   title: "Colteum — Modern Product Studio. Nairobi.",
@@ -409,10 +408,13 @@ export default function HomePage() {
               <FadeIn key={study.name} delay={i * 0.08}>
                 <GlassCard className="overflow-hidden">
                   <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <PlaceholderAsset
-                      label={study.imageLabel}
-                      className="aspect-[16/10] lg:aspect-auto lg:h-72"
-                    />
+                    <div className="aspect-[16/10] lg:aspect-auto lg:h-72 overflow-hidden">
+                      <img
+                        src={study.image}
+                        alt={study.imageLabel}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="p-8 lg:p-10 flex flex-col justify-center">
                       <h3 className="font-display font-bold text-white text-2xl mb-3">
                         {study.name}

@@ -70,6 +70,9 @@ export const metadata: Metadata = {
       "Colteum is a Nairobi-based product studio building growth-ready websites, brand systems, content engines, custom software, and frontier-tech infrastructure for modern businesses worldwide.",
     images: ["/og-image.jpg"],
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
