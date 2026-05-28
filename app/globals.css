@@ -117,12 +117,16 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-accent);
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(59, 130, 246, 0.40);
-  transform: scale(1.01);
+  border-color: rgba(59, 130, 246, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(59, 130, 246, 0.10), 0 4px 16px rgba(0, 0, 0, 0.30);
   background: rgba(20, 32, 66, 0.7);
 }
 
@@ -165,6 +169,42 @@
   }
 }
 
+/* ── SECTION DIVIDER ───────────────────────────────────────────────── */
+
+/* Gradient-faded hairline — replaces hard border-white/8 rules */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent 100%
+  );
+  border: none;
+}
+
+/* ── EYEBROW LABEL ─────────────────────────────────────────────────── */
+
+/* Pill container for section eyebrow labels */
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-accent);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.eyebrow-pill--secondary { color: var(--accent-secondary); border-color: rgba(139, 92, 246, 0.25); }
+.eyebrow-pill--warm      { color: var(--accent-warm);      border-color: rgba(245, 178, 94, 0.25); }
+
 /* ── MARQUEE ANIMATION ─────────────────────────────────────────────── */
 
 @keyframes marquee {
@@ -205,15 +245,22 @@
   font-weight: 500;
   padding: 0.875rem 1.75rem;
   border-radius: 0.5rem;
-  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.18s ease,
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s ease;
   display: inline-block;
   text-align: center;
 }
 
 .cta-primary:hover {
   background: #2563EB;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(59, 130, 246, 0.45);
+}
+
+.cta-primary:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .cta-ghost {
@@ -222,7 +269,7 @@
   font-weight: 500;
   padding: 0.875rem 1.75rem;
   border-radius: 0.5rem;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
   display: inline-block;
   text-align: center;
 }
@@ -230,6 +277,11 @@
 .cta-ghost:hover {
   background: rgba(59, 130, 246, 0.10);
   color: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.30);
+}
+
+.cta-ghost:active {
+  transform: scale(0.99);
 }
 
 /* ── TEXT LINK ─────────────────────────────────────────────────────── */
@@ -254,3 +306,40 @@
 
 .text-link:hover { color: #93C5FD; }
 .text-link:hover::after { width: 100%; }
+
+/* ── REDUCED MOTION ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg::before,
+  .animated-bg::after {
+    animation: none;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+
+  .glass-card {
+    transition: border-color 0.15s ease;
+  }
+
+  .glass-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .cta-primary,
+  .cta-ghost {
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .cta-primary:hover,
+  .cta-ghost:hover {
+    transform: none;
+  }
+
+  .cta-primary:active,
+  .cta-ghost:active {
+    transform: none;
+  }
+}
