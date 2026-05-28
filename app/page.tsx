@@ -408,11 +408,11 @@ export default function HomePage() {
               <FadeIn key={study.name} delay={i * 0.08}>
                 <GlassCard className="overflow-hidden">
                   <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <div className="aspect-[16/10] lg:aspect-auto lg:h-72 overflow-hidden">
+                    <div className="aspect-[16/10] lg:aspect-auto lg:h-72 overflow-hidden bg-[--bg-surface-1] flex items-center justify-center p-6">
                       <img
                         src={study.image}
                         alt={study.imageLabel}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col justify-center">

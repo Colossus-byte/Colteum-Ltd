@@ -106,11 +106,11 @@ function CaseStudyBlock({ study }: { study: CaseStudy }) {
   return (
     <GlassCard className="overflow-hidden">
       {/* Screenshot */}
-      <div className="aspect-[16/10] w-full overflow-hidden">
+      <div className="aspect-[16/10] w-full overflow-hidden bg-[--bg-surface-1] flex items-center justify-center p-6">
         <img
           src={study.image}
           alt={study.imageAlt}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 
