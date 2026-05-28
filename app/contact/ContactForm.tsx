@@ -19,6 +19,7 @@ const services = [
   "Brand System",
   "Content & UGC System",
   "Growth Engine",
+  "Business Plan & Financial Model Sprint",
   "Proposal & Funding Systems",
   "AI Visibility Starter",
   "AI Visibility Standard",

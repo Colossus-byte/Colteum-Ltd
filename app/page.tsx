@@ -36,6 +36,7 @@ const buildCategories = [
       { name: "Brand System", from: "From KES 50,000", delivery: "5 days" },
       { name: "Content & UGC System", from: "From KES 80,000", delivery: "7 days" },
       { name: "Growth Engine", from: "From KES 150,000", delivery: "2 weeks" },
+      { name: "Business Plan & Financial Model Sprint", from: "From KES 100,000", delivery: "7–10 days" },
     ],
   },
   {

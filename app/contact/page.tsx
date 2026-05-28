@@ -25,6 +25,7 @@ const serviceSlugToLabel: Record<string, string> = {
   "brand-system": "Brand System",
   "ugc-system": "Content & UGC System",
   "growth-engine": "Growth Engine",
+  "business-plan-sprint": "Business Plan & Financial Model Sprint",
   "proposal-systems": "Proposal & Funding Systems",
   "ai-visibility-starter": "AI Visibility Starter",
   "ai-visibility-standard": "AI Visibility Standard",
