@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -43,13 +42,13 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-18 py-4">
           {/* Wordmark */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/android-chrome-512x512.png"
               alt="Colteum"
               width={30}
               height={30}
               className="rounded-lg shrink-0"
-              priority
             />
             <span className="font-display text-xl font-bold text-white tracking-tight group-hover:text-[--accent-primary] transition-colors duration-200">
               Colteum
