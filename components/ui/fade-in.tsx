@@ -1,13 +1,23 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+
+type FadeInDirection = "up" | "left" | "right" | "scale" | "none";
 
 interface FadeInProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  direction?: "up" | "none";
+  direction?: FadeInDirection;
 }
+
+const variants: Record<FadeInDirection, { initial: object; animate: object }> = {
+  up:    { initial: { opacity: 0, y: 20 },      animate: { opacity: 1, y: 0 } },
+  left:  { initial: { opacity: 0, x: -28 },     animate: { opacity: 1, x: 0 } },
+  right: { initial: { opacity: 0, x: 28 },      animate: { opacity: 1, x: 0 } },
+  scale: { initial: { opacity: 0, scale: 0.97 }, animate: { opacity: 1, scale: 1 } },
+  none:  { initial: { opacity: 0 },             animate: { opacity: 1 } },
+};
 
 export function FadeIn({
   children,
@@ -15,12 +25,22 @@ export function FadeIn({
   className,
   direction = "up",
 }: FadeInProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  const { initial, animate } = prefersReducedMotion
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 } }
+    : variants[direction];
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: direction === "up" ? 20 : 0 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={initial}
+      whileInView={animate}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{
+        duration: prefersReducedMotion ? 0.01 : 0.55,
+        ease: [0.16, 1, 0.3, 1],
+        delay: prefersReducedMotion ? 0 : delay,
+      }}
       className={className}
     >
       {children}
