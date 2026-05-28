@@ -4,11 +4,25 @@ interface GlassCardProps {
   className?: string;
   children: React.ReactNode;
   hover?: boolean;
+  /** "default" uses the standard glass-card hover; "static" disables hover transforms entirely */
+  variant?: "default" | "static";
 }
 
-export function GlassCard({ className, children, hover = true }: GlassCardProps) {
+export function GlassCard({
+  className,
+  children,
+  hover = true,
+  variant = "default",
+}: GlassCardProps) {
   return (
-    <div className={cn("glass-card rounded-xl", hover && "cursor-default", className)}>
+    <div
+      className={cn(
+        "glass-card rounded-xl",
+        hover && variant === "default" && "cursor-default",
+        hover && variant === "static" && "cursor-default [&]:hover:transform-none [&]:hover:box-shadow-none",
+        className
+      )}
+    >
       {children}
     </div>
   );
