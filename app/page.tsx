@@ -230,7 +230,7 @@ export default function HomePage() {
             >
               <div
                 className="placeholder-asset w-5 h-5 rounded-sm"
-                data-replace={`/public/images/logos/${name.toLowerCase().replace(/\s+/g, "-")}.svg`}
+                data-replace={`/images/logos/${name.toLowerCase().replace(/\s+/g, "-")}.svg`}
               />
               {name}
             </div>

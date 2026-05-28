@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Linkedin, Twitter, Mail } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PlaceholderAsset } from "@/components/PlaceholderAsset";
 
 export const metadata: Metadata = {
   title: "About",
@@ -170,11 +169,13 @@ export default function AboutPage() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <PlaceholderAsset
-                label="Jude Baraka studio portrait — 4:5, navy backdrop. Replace at /public/images/founder-about.jpg"
-                aspectRatio="aspect-[4/5]"
-                className="max-w-sm mx-auto lg:mx-0"
-              />
+              <div className="aspect-[4/5] w-full max-w-sm mx-auto lg:mx-0 overflow-hidden rounded-xl">
+                <img
+                  src="/images/founder-about.jpg"
+                  alt="Jude Baraka, Founder of Colteum"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </FadeIn>
           </div>
         </div>
