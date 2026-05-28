@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, type TargetAndTransition } from "motion/react";
 
 type FadeInDirection = "up" | "left" | "right" | "scale" | "none";
 
@@ -11,7 +11,7 @@ interface FadeInProps {
   direction?: FadeInDirection;
 }
 
-const variants: Record<FadeInDirection, { initial: object; animate: object }> = {
+const variants: Record<FadeInDirection, { initial: TargetAndTransition; animate: TargetAndTransition }> = {
   up:    { initial: { opacity: 0, y: 20 },      animate: { opacity: 1, y: 0 } },
   left:  { initial: { opacity: 0, x: -28 },     animate: { opacity: 1, x: 0 } },
   right: { initial: { opacity: 0, x: 28 },      animate: { opacity: 1, x: 0 } },
