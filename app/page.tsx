@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, Mail } from "lucide-react";
-import { Spotlight } from "@/components/ui/spotlight";
+import { HeroBackground } from "@/components/ui/hero-background";
 import { Marquee } from "@/components/ui/marquee";
 import { GlassCard } from "@/components/ui/glass-card";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -166,10 +166,10 @@ export default function HomePage() {
           Tier: Monumental (py-40 sm:py-56)
           Motion: eyebrow → H1 (scale) → subtitle → CTAs
       ─────────────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <Spotlight className="absolute inset-0 z-0" fill="rgb(59,130,246)" />
+      <section className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20">
+        <HeroBackground className="absolute inset-0 z-0" />
 
-        <div className="section-container relative z-10 text-center py-40 sm:py-56">
+        <div className="section-container relative z-10 text-center pt-16 sm:pt-20 pb-24 sm:pb-32">
           <FadeIn direction="up">
             <span className="eyebrow-pill">
               Modern infrastructure for modern businesses. Built lean. Shipped fast.
@@ -179,7 +179,7 @@ export default function HomePage() {
           <FadeIn direction="scale" delay={0.08}>
             <h1
               className="font-display font-bold text-white mb-6 leading-[1.05] tracking-[-0.04em]"
-              style={{ fontSize: "clamp(3rem, 8vw, 7.25rem)" }}
+              style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)" }}
             >
               Digital Infrastructure<br className="hidden sm:block" /> for Modern Businesses.
             </h1>
@@ -351,10 +351,8 @@ export default function HomePage() {
       {/* ── S5: INTELLIGENCE FEATURE BLOCK ───────────────────────────────
           Tier: Primary (py-32 sm:py-40)
           Type: T3 heading (restrained — credibility over spectacle)
-          Background: bg-surface-1 at full strength; purple spotlight at /50 (unchanged)
+          Background: bg-surface-1 at full strength; blue ambient glow left-side
           Motion: content slides left, tier cards slide right
-          NOTE: purple spotlight intentionally kept at /50 — section sells
-                research credibility, not visual drama
       ─────────────────────────────────────────────────────────────────── */}
       <div className="section-divider" />
       <section
@@ -362,7 +360,13 @@ export default function HomePage() {
         style={{ background: "rgba(15,27,51,0.85)" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[--bg-surface-2]/50 via-transparent to-[--bg-primary] pointer-events-none" />
-        <Spotlight className="absolute inset-0 z-0" fill="rgb(139,92,246)" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 60% at 20% 50%, rgba(59,130,246,0.10) 0%, transparent 65%)",
+          }}
+        />
 
         <div className="section-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
