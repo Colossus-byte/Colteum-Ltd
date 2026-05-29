@@ -169,6 +169,11 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20">
         <HeroBackground className="absolute inset-0 z-0" />
 
+        {/* Gold radial glow — top right */}
+        <div className="absolute pointer-events-none" style={{ width: 400, height: 400, top: -60, right: -40, background: "radial-gradient(circle, rgba(200,149,26,0.09) 0%, transparent 70%)" }} />
+        {/* Cyan radial glow — bottom left */}
+        <div className="absolute pointer-events-none" style={{ width: 320, height: 320, bottom: -80, left: "15%", background: "radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)" }} />
+
         <div className="section-container relative z-10 text-center pt-16 sm:pt-20 pb-24 sm:pb-32">
           <FadeIn direction="up">
             <span className="eyebrow-pill">
@@ -197,14 +202,14 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="cta-primary text-base px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2"
+                className="cta-primary text-base px-8 py-4 inline-flex items-center justify-center gap-2"
               >
                 Get a Quote in 24 Hours
                 <ArrowRight size={18} />
               </Link>
               <Link
                 href="/work"
-                className="cta-ghost text-base px-8 py-4 rounded-xl"
+                className="cta-ghost text-base px-8 py-4"
               >
                 See Our Work
               </Link>
@@ -212,7 +217,7 @@ export default function HomePage() {
           </FadeIn>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[--bg-primary] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[var(--navy)] to-transparent pointer-events-none" />
       </section>
 
       {/* ── S2: TRUST BAR ────────────────────────────────────────────────
@@ -220,7 +225,7 @@ export default function HomePage() {
           Background: bg-surface-1/30 — slight thermal lift
       ─────────────────────────────────────────────────────────────────── */}
       <div className="section-divider" />
-      <section className="py-16 sm:py-20 overflow-hidden" style={{ background: "rgba(15,27,51,0.30)" }}>
+      <section className="py-16 sm:py-20 overflow-hidden" style={{ background: "var(--navy-2)" }}>
         <div className="section-container mb-6">
           <FadeIn direction="none">
             <p className="text-center text-[11px] font-mono text-[--text-muted] tracking-widest uppercase">
@@ -232,7 +237,7 @@ export default function HomePage() {
           {trustLogos.map((name) => (
             <div
               key={name}
-              className="mx-6 px-6 py-2.5 rounded-full border border-white/10 bg-white/3 text-sm text-[--text-muted] whitespace-nowrap font-mono tracking-wide flex items-center gap-2"
+              className="mx-6 px-6 py-2.5 rounded-full border border-[rgba(255,255,255,0.055)] bg-[rgba(255,255,255,0.02)] text-sm text-[var(--cream-muted)] whitespace-nowrap font-mono tracking-wide flex items-center gap-2"
             >
               <div
                 className="placeholder-asset w-5 h-5 rounded-sm"
@@ -253,7 +258,7 @@ export default function HomePage() {
       <section className="py-32 sm:py-40">
         <div className="section-container max-w-3xl text-center">
           <FadeIn>
-            <div className="w-12 h-0.5 bg-[--accent-primary] mx-auto mb-8 opacity-70" />
+            <div className="w-12 h-0.5 bg-[var(--gold)] mx-auto mb-8 opacity-70" />
             <h2
               className="font-display font-bold text-white mb-8 leading-[1.1] tracking-[-0.03em]"
               style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
@@ -279,7 +284,7 @@ export default function HomePage() {
           Motion: cards stagger left → center → right
       ─────────────────────────────────────────────────────────────────── */}
       <div className="section-divider" />
-      <section className="py-24 sm:py-28">
+      <section className="py-24 sm:py-28" style={{ background: "var(--navy-2)" }}>
         <div className="section-container">
           <FadeIn>
             <div className="mb-16 sm:mb-20">
@@ -301,7 +306,18 @@ export default function HomePage() {
               const directions = ["left", "up", "right"] as const;
               return (
                 <FadeIn key={cat.id} delay={i * 0.08} direction={directions[i]}>
-                  <GlassCard className="p-8 flex flex-col h-full">
+                  <GlassCard
+                    className="p-8 flex flex-col h-full"
+                    style={{
+                      borderTop: `2px solid ${
+                        cat.id === "build"
+                          ? "var(--gold)"
+                          : cat.id === "grow"
+                          ? "var(--gold-light)"
+                          : "var(--cyan)"
+                      }`,
+                    }}
+                  >
                     <p className="text-[11px] font-mono text-[--accent-primary] uppercase tracking-[0.18em] mb-3">
                       {cat.label}
                     </p>
@@ -357,14 +373,14 @@ export default function HomePage() {
       <div className="section-divider" />
       <section
         className="py-32 sm:py-40 relative overflow-hidden"
-        style={{ background: "rgba(15,27,51,0.85)" }}
+        style={{ background: "#060C1A" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[--bg-surface-2]/50 via-transparent to-[--bg-primary] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-3)]/50 via-transparent to-[var(--navy-deep)] pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 20% 50%, rgba(59,130,246,0.10) 0%, transparent 65%)",
+              "radial-gradient(ellipse 70% 60% at 20% 50%, rgba(6,182,212,0.10) 0%, transparent 65%)",
           }}
         />
 
@@ -387,7 +403,7 @@ export default function HomePage() {
                 </p>
                 <Link
                   href="/intelligence"
-                  className="cta-primary inline-flex items-center gap-2 text-sm px-6 py-3 rounded-lg"
+                  className="cta-primary inline-flex items-center gap-2 text-sm px-6 py-3"
                 >
                   Explore Intelligence
                   <ArrowRight size={16} />
@@ -398,12 +414,16 @@ export default function HomePage() {
             <div className="space-y-4">
               {intelTiers.map((tier, i) => (
                 <FadeIn key={tier.name} direction="right" delay={i * 0.1}>
-                  <GlassCard className="p-6" variant="static">
+                  <GlassCard
+                    className="p-6"
+                    variant="static"
+                    style={{ background: "var(--cyan-dim)", border: "1px solid var(--cyan-border)" }}
+                  >
                     <div className="flex items-start justify-between gap-4 mb-2">
                       <h3 className="font-display font-bold text-white text-base tracking-[-0.01em]">
                         {tier.name}
                       </h3>
-                      <span className="text-xs font-mono text-[--accent-secondary] shrink-0">
+                      <span className="text-xs font-mono text-[var(--cyan-light)] shrink-0">
                         {tier.price}
                       </span>
                     </div>
@@ -502,7 +522,7 @@ export default function HomePage() {
       <div className="section-divider" />
       <section
         className="py-16 sm:py-20 relative"
-        style={{ background: "rgba(15,27,51,0.40)" }}
+        style={{ background: "var(--navy-3)" }}
       >
         <div className="section-container">
           <FadeIn>
@@ -592,8 +612,8 @@ export default function HomePage() {
       <section
         className="py-24 sm:py-28 relative"
         style={{
-          background: "rgba(20,32,66,0.20)",
-          boxShadow: "inset 0 1px 0 rgba(245,178,94,0.04)",
+          background: "var(--navy-3)",
+          boxShadow: "inset 0 1px 0 rgba(200,149,26,0.04)",
         }}
       >
         <div className="section-container">
@@ -653,10 +673,10 @@ export default function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(59,130,246,0.10) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,149,26,0.08) 0%, transparent 70%)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/20 to-[--bg-primary] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-2)]/20 to-[var(--navy)] pointer-events-none" />
 
         <div className="section-container relative z-10 text-center">
           <FadeIn direction="scale">
@@ -676,14 +696,14 @@ export default function HomePage() {
                 href="https://wa.me/254746089499?text=Hi%20Colteum%2C%20I%27m%20interested%20in%20working%20with%20you"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cta-primary text-base px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2"
+                className="cta-primary text-base px-8 py-4 inline-flex items-center justify-center gap-2"
               >
                 <MessageCircle size={18} />
                 Start on WhatsApp
               </a>
               <a
                 href="mailto:hello@colteumgroup.com"
-                className="cta-ghost text-base px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2"
+                className="cta-ghost text-base px-8 py-4 inline-flex items-center justify-center gap-2"
               >
                 <Mail size={18} />
                 Send an Email

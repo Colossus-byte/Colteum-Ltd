@@ -91,7 +91,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           type="text"
           required
           placeholder="Your name"
-          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[--accent-primary] transition-colors"
+          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[var(--gold)] transition-colors"
         />
       </div>
 
@@ -106,7 +106,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           type="text"
           required
           placeholder="email@example.com or +254..."
-          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[--accent-primary] transition-colors"
+          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[var(--gold)] transition-colors"
         />
       </div>
 
@@ -121,7 +121,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           required
           value={inquiryType}
           onChange={(e) => setInquiryType(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[--accent-primary] transition-colors appearance-none"
+          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--gold)] transition-colors appearance-none"
         >
           {inquiryTypes.map((t) => (
             <option key={t} value={t} style={{ backgroundColor: "#0F1B33" }}>
@@ -141,7 +141,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
             id="service"
             name="service"
             defaultValue={defaultService ?? ""}
-            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[--accent-primary] transition-colors appearance-none"
+            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--gold)] transition-colors appearance-none"
           >
             <option value="" style={{ backgroundColor: "#0F1B33" }}>Select a service...</option>
             {services.map((s) => (
@@ -162,7 +162,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           <select
             id="venture"
             name="venture"
-            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[--accent-primary] transition-colors appearance-none"
+            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--gold)] transition-colors appearance-none"
           >
             <option value="" style={{ backgroundColor: "#0F1B33" }}>Select a venture...</option>
             {ventures.map((v) => (
@@ -183,7 +183,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           <select
             id="budget"
             name="budget"
-            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[--accent-primary] transition-colors appearance-none"
+            className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white text-sm focus:outline-none focus:border-[var(--gold)] transition-colors appearance-none"
           >
             <option value="" style={{ backgroundColor: "#0F1B33" }}>Select a range...</option>
             {budgets.map((b) => (
@@ -206,7 +206,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
           required
           rows={5}
           placeholder="What are you building? What do you need?"
-          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[--accent-primary] transition-colors resize-none"
+          className="w-full px-4 py-3 rounded-lg bg-[--bg-surface-1] border border-white/10 text-white placeholder-[--text-muted] text-sm focus:outline-none focus:border-[var(--gold)] transition-colors resize-none"
         />
       </div>
 
@@ -222,7 +222,7 @@ export function ContactForm({ defaultService, defaultType }: ContactFormProps) {
       <button
         type="submit"
         disabled={isPending}
-        className="cta-primary w-full py-3.5 rounded-lg text-base flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="cta-primary w-full py-3.5 text-base flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {isPending ? (
           <>

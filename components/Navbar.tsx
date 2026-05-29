@@ -34,7 +34,7 @@ export default function Navbar() {
       className={cn(
         "fixed w-full z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#0A1628]/90 backdrop-blur-md border-b border-white/8 shadow-lg shadow-black/20"
+          ? "bg-[rgba(8,14,29,0.97)] backdrop-blur-md border-b border-[rgba(255,255,255,0.055)] shadow-lg shadow-black/20"
           : "bg-transparent"
       )}
     >
@@ -53,7 +53,7 @@ export default function Navbar() {
             <span className="font-display text-xl font-bold text-white tracking-tight group-hover:text-[--accent-primary] transition-colors duration-200">
               Colteum
             </span>
-            <span className="ml-0.5 text-xs font-mono text-[--text-muted] tracking-widest uppercase mt-0.5 hidden sm:block">
+            <span className="ml-0.5 text-xs font-mono text-[var(--gold-bright)] tracking-widest uppercase mt-0.5 hidden sm:block">
               Ltd
             </span>
           </Link>
@@ -67,8 +67,8 @@ export default function Navbar() {
                 className={cn(
                   "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150",
                   pathname === link.href
-                    ? "text-white bg-white/8"
-                    : "text-[--text-muted] hover:text-white hover:bg-white/5"
+                    ? "text-[var(--cream)] bg-[var(--gold-dim)]"
+                    : "text-[var(--cream-muted)] hover:text-[var(--gold)] hover:bg-white/5"
                 )}
               >
                 {link.name}
@@ -104,7 +104,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" as const }}
-            className="md:hidden bg-[#0A1628]/95 backdrop-blur-md border-t border-white/8"
+            className="md:hidden bg-[rgba(8,14,29,0.97)] backdrop-blur-md border-t border-[rgba(255,255,255,0.055)]"
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (

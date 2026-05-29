@@ -45,7 +45,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   return (
     <div className="pt-20">
       <section className="py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-2)]/40 to-transparent pointer-events-none" />
         <div className="section-container relative z-10">
           <FadeIn>
             <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-4">
@@ -107,7 +107,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-white hover:text-[--accent-primary] transition-colors"
                   >
-                    <MessageCircle size={18} className="text-[--success] shrink-0" />
+                    <MessageCircle size={18} className="text-[var(--gold)] shrink-0" />
                     +254 746 089 499
                   </a>
                   <p className="text-xs text-[--text-muted] mt-2 ml-7">

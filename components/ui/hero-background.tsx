@@ -77,7 +77,7 @@ export function HeroBackground({ className }: HeroBackgroundProps) {
           width: GLOW_W,
           height: GLOW_H,
           background:
-            "radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.20) 0%, rgba(59,130,246,0.07) 45%, transparent 70%)",
+            "radial-gradient(ellipse at 50% 50%, rgba(200,149,26,0.18) 0%, rgba(200,149,26,0.06) 45%, transparent 70%)",
           willChange: "transform",
           /* Default position: horizontally centered, ~35% down — used as static fallback */
           transform: `translate3d(calc(50vw - ${GLOW_W / 2}px), calc(35vh - ${GLOW_H / 2}px), 0)`,

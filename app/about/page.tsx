@@ -65,7 +65,7 @@ export default function AboutPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-28 relative overflow-hidden" style={{ background: "var(--navy)" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-[--bg-surface-1]/50 to-transparent pointer-events-none" />
         <div className="section-container relative z-10">
           <FadeIn>
@@ -93,7 +93,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Colteum exists */}
-      <section className="py-24 border-t border-white/8">
+      <section className="py-24 border-t border-white/8" style={{ background: "var(--navy-2)" }}>
         <div className="section-container max-w-3xl">
           <FadeIn>
             <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-6">
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </section>
 
       {/* Founder */}
-      <section className="py-24 border-t border-white/8">
+      <section className="py-24 border-t border-white/8" style={{ background: "var(--navy)" }}>
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
@@ -146,7 +146,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-[var(--cream-muted)] hover:text-[var(--gold)] transition-colors"
                 >
                   <Linkedin size={15} />
                   LinkedIn
@@ -156,14 +156,14 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="X"
-                  className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-[var(--cream-muted)] hover:text-[var(--gold)] transition-colors"
                 >
                   <Twitter size={15} />
                   X
                 </a>
                 <a
                   href="mailto:jude@colteumgroup.com"
-                  className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-[var(--cream-muted)] hover:text-[var(--gold)] transition-colors"
                 >
                   <Mail size={15} />
                   Email
@@ -185,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* Operating Model */}
-      <section className="py-24 border-t border-white/8">
+      <section className="py-24 border-t border-white/8" style={{ background: "var(--navy-3)" }}>
         <div className="section-container">
           <FadeIn>
             <div className="mb-14">
@@ -216,7 +216,7 @@ export default function AboutPage() {
       </section>
 
       {/* Studio & Ventures */}
-      <section className="py-24 border-t border-white/8">
+      <section className="py-24 border-t border-white/8" style={{ background: "var(--navy-2)" }}>
         <div className="section-container">
           <FadeIn>
             <div className="mb-5">
@@ -267,7 +267,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/contact?type=partnership"
-              className="cta-ghost inline-flex items-center gap-2 text-sm px-6 py-3 rounded-lg"
+              className="cta-ghost inline-flex items-center gap-2 text-sm px-6 py-3"
             >
               Partnership Inquiry
               <ArrowRight size={14} />
@@ -277,7 +277,7 @@ export default function AboutPage() {
       </section>
 
       {/* Where we're based */}
-      <section className="py-24 border-t border-white/8">
+      <section className="py-24 border-t border-white/8" style={{ background: "var(--navy)" }}>
         <div className="section-container max-w-3xl">
           <FadeIn>
             <p className="text-xs font-mono text-[--accent-primary] uppercase tracking-widest mb-6">

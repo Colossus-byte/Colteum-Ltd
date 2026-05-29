@@ -3,6 +3,7 @@ import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CTABand from "@/components/CTABand";
 import { CookieBanner } from "@/components/CookieBanner";
 
 const inter = Inter({
@@ -149,6 +150,7 @@ export default function RootLayout({
         <div className="animated-bg" aria-hidden="true" />
         <Navbar />
         <main className="flex-grow relative z-10">{children}</main>
+        <CTABand />
         <Footer />
         <CookieBanner />
       </body>
