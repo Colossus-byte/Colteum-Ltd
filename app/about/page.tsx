@@ -141,9 +141,10 @@ export default function AboutPage() {
                 leading Brahams Foundation, and shipping work across the studio practices.
               </p>
               <div className="flex items-center gap-5">
-                {/* TODO: add actual social URLs */}
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/jude-baraka-436322246"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
                 >
@@ -151,7 +152,9 @@ export default function AboutPage() {
                   LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/JudeBaraka1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="X"
                   className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
                 >
@@ -159,7 +162,7 @@ export default function AboutPage() {
                   X
                 </a>
                 <a
-                  href="mailto:hello@colteumgroup.com"
+                  href="mailto:jude@colteumgroup.com"
                   className="flex items-center gap-2 text-sm text-[--text-muted] hover:text-white transition-colors"
                 >
                   <Mail size={15} />

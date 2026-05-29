@@ -44,7 +44,7 @@ export async function submitContactForm(
     .join("\n");
 
   try {
-    const res = await fetch("https://formsubmit.co/ajax/colteumcompany@gmail.com", {
+    const res = await fetch("https://formsubmit.co/ajax/hello@colteumgroup.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

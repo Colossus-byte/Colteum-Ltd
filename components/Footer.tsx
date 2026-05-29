@@ -157,7 +157,9 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             {/* TODO: add social URLs */}
             <a
-              href="#"
+              href="https://www.linkedin.com/in/jude-baraka-436322246"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="text-[--text-muted] hover:text-white transition-colors"
             >
