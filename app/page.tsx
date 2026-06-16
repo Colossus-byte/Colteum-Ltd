@@ -69,14 +69,6 @@ const intelTiers = [
 
 const caseStudies = [
   {
-    name: "Brahams Foundation",
-    desc: "Platform for a rural-development NGO based in Siaya County. Built for donor credibility, program visibility, and grant readiness.",
-    link: "https://brahams-foundation.vercel.app",
-    linkLabel: "brahams-foundation.vercel.app",
-    image: "/images/projects/brahams.jpg",
-    imageLabel: "Brahams Foundation homepage screenshot, 16:10",
-  },
-  {
     name: "Clarix Protocol",
     desc: "Web3 education and credentialing platform. Currently live and in active development — verifiable on-chain credentials for the next generation of learners.",
     link: "https://clarixprotocol.com",
